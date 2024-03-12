@@ -1,5 +1,5 @@
-# antidebug_BuildCommDCBAndTimeoutA
-Antidebugging via BuildCommDCBAndTimeoutA PoC
+# SandboxEvasion_BuildCommDCBAndTimeoutA
+Sandbox evasion via BuildCommDCBAndTimeoutA PoC
 
 ## What is this?
 While examining a known-bad malware executable in Ghidra, we found this:
