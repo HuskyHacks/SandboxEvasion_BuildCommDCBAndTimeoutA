@@ -18,6 +18,13 @@ BOOL BuildCommDCBAndTimeoutsA(
 Return value
 If the function succeeds, the return value is nonzero.
 ```
+The value provided for the first parameter in the malware is completely bogus. A properly formatted device string for that first parameter looks like this:
+```
+// The param spec:
+//COMx[:][baud={11|110|15|150|30|300|60|600|12|1200|24|2400|48|4800|96|9600|19|19200}][parity={n|e|o|m|s}][data={5|6|7|8}][stop={1|1.5|2}][to={on|off}][xon={on|off}][odsr={on|off}][octs={on|off}][dtr={on|off|hs}][rts={on|off|hs|tg}][idsr={on|off}]
+
+// properly formatted device string: "COM1:9600,n,8,1"
+```
 
 The specific use in the malware program is almost the opposite of what you'd expect to normally see:
 
@@ -27,6 +34,6 @@ The specific use in the malware program is almost the opposite of what you'd exp
         TerminateProcess(CurrentProcess, 0);
     }
 ```
-... which means if this API call *succeeds*, then kill the current process. Why might that be?
+... which means if this API call *succeeds* when we pass in this bogus device string, then kill the current process. Why might that be?
 
 There's a good chance that malware sandboxes emulate the API calls that they detect during execution, so if this program is in a malware sandbox, perhaps the emulated environment allows for bogus device strings? That's the hypothesis, anyway.
