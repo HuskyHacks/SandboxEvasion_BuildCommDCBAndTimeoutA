@@ -1,0 +1,2 @@
+# antidebug_BuildCommDCBAndTimeoutA
+Antidebugging via BuildCommDCBAndTimeoutA PoC
